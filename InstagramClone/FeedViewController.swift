@@ -8,15 +8,17 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
+
     var userEmailArray = [String]()
     var userCommentArray = [String]()
     var likeArray = [Int]()
-    var userImageUrl = [String]()
+    var userImageArray = [String]()
+    var DocumentIdArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +34,24 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let fireStoreDatabase = Firestore.firestore()
         
-        fireStoreDatabase.collectionGroup("Posts").addSnapshotListener { (snapshot, error) in
+        // .ORDER ile tarihe göre postları sondan başa doğru sıraladım.
+        fireStoreDatabase.collection("Posts").order(by: "date", descending: true).addSnapshotListener { (snapshot, error) in
             if error != nil{
                 self.makeAlert(titleInput: "Error", messageInput: error?.localizedDescription ?? "Error")
             } else{
                 if snapshot?.isEmpty != true && snapshot != nil{
                     
+                    // Anasayfa'da aynı postlar birden fazla kez gelmemesi için temizliyorum.
+                    self.userImageArray.removeAll(keepingCapacity: false)
+                    self.userEmailArray.removeAll(keepingCapacity: false)
+                    self.userCommentArray.removeAll(keepingCapacity: false)
+                    self.likeArray.removeAll(keepingCapacity: false)
+                    self.DocumentIdArray.removeAll(keepingCapacity: false)
+                    
+                    // DocumentId ile ben tıklananan postun like'ına falan ulaşabileceğim.
                     for document in snapshot!.documents{
                         let documentID = document.documentID
-                        
+                            self.DocumentIdArray.append(documentID)
                         if let postedBy = document.get("postedBy") as? String{
                             self.userEmailArray.append(postedBy)
                             
@@ -51,13 +62,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                                     self.likeArray.append(likes)
                                     
                                     if let imageUrl = document.get("imageUrl") as? String{
-                                        self.userImageUrl.append(imageUrl)
+                                        self.userImageArray.append(imageUrl)
                                     }
                                 }
                             }
                         }
                     }
-                    
                     self.tableView.reloadData()
                 }
             }
@@ -83,7 +93,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.userEmailLabel.text = userEmailArray[indexPath.row]
         cell.commentLabel.text = userCommentArray[indexPath.row]
         cell.likeLabel.text = String(likeArray[indexPath.row])
-        cell.userImageView.image = UIImage(named: "select.png")
+        cell.userImageView.sd_setImage(with: URL(string: self.userImageArray[indexPath.row]))
+        cell.documentIdLabel.text = DocumentIdArray[indexPath.row]
         
         return cell
     }

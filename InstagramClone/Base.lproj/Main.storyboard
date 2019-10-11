@@ -37,6 +37,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select" translatesAutoresizingMaskIntoConstraints="NO" id="L3X-gq-Bbs">
                                 <rect key="frame" x="65" y="119" width="284" height="275"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="275" id="C6y-ma-dtT"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="284" id="M1Q-yP-MUN"/>
                                     <constraint firstAttribute="height" constant="275" id="YeC-Gq-RLl"/>
                                     <constraint firstAttribute="width" constant="284" id="lfh-oB-I6f"/>
                                 </constraints>
@@ -127,6 +129,10 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hp5-UE-XJ7">
                                                     <rect key="frame" x="20" y="56" width="374" height="270"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="374" id="K4q-KM-ueM"/>
+                                                        <constraint firstAttribute="height" constant="270" id="hGF-dw-uyR"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="useremail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arj-wq-CnD">
                                                     <rect key="frame" x="20" y="11" width="374" height="37"/>
@@ -166,9 +172,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMV-Ud-Jd1">
+                                                    <rect key="frame" x="352" y="19" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="TMV-Ud-Jd1" firstAttribute="centerY" secondItem="arj-wq-CnD" secondAttribute="centerY" id="37x-OV-bIa"/>
                                                 <constraint firstItem="Q8a-FZ-tXB" firstAttribute="top" secondItem="H5G-lN-LWF" secondAttribute="bottom" constant="6" id="8F4-Ak-8hT"/>
+                                                <constraint firstItem="TMV-Ud-Jd1" firstAttribute="trailing" secondItem="arj-wq-CnD" secondAttribute="trailing" id="DZQ-6i-D6M"/>
                                                 <constraint firstItem="hp5-UE-XJ7" firstAttribute="leading" secondItem="H5G-lN-LWF" secondAttribute="leading" id="EpX-A5-ZOq"/>
                                                 <constraint firstItem="H5G-lN-LWF" firstAttribute="trailing" secondItem="age-Dm-mmd" secondAttribute="trailing" id="I77-3j-M8M"/>
                                                 <constraint firstItem="H5G-lN-LWF" firstAttribute="top" secondItem="hp5-UE-XJ7" secondAttribute="bottom" constant="8" symbolic="YES" id="LLT-Nc-xb8"/>
@@ -187,6 +201,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentLabel" destination="H5G-lN-LWF" id="OfR-6v-x4G"/>
+                                            <outlet property="documentIdLabel" destination="TMV-Ud-Jd1" id="FTN-ek-pcg"/>
                                             <outlet property="likeLabel" destination="age-Dm-mmd" id="WVx-uo-n97"/>
                                             <outlet property="userEmailLabel" destination="arj-wq-CnD" id="q2n-Sc-laL"/>
                                             <outlet property="userImageView" destination="hp5-UE-XJ7" id="jjw-DZ-KlX"/>
