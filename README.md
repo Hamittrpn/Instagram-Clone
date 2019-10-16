@@ -1,6 +1,6 @@
 # Instagram-Clone
 
-![](https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png)
+![](https://static.chief.io/media/products/firebase_logo.png)
 
 ## 1.Firebase database operations
 - Firebase Auth
