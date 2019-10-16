@@ -2,7 +2,6 @@
 
 ![](https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png)
 
-
 ## 1.Firebase database operations
 - Firebase Auth
 - Firebase Storage
