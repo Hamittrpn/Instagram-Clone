@@ -1,6 +1,6 @@
 # Instagram-Clone
 
-![](https://spng.pngfly.com/20180417/irq/kisspng-firebase-cloud-messaging-computer-icons-google-clo-github-5ad5d3cde70706.9853526815239628299463.jpg)
+![](https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png)
 
 
 ## 1.Firebase database operations
